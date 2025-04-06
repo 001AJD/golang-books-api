@@ -4,19 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/001ajd/golang-books-api/models"
 )
 
-type Books struct {
-	Name   string `json:"name"`
-	Author string `json:"author"`
-}
-
-var books = []Books{
-	{Name: "Atomis Habits", Author: "James Clear"},
-}
-
-func GetBooks(w http.ResponseWriter, r *http.Request) {
+func (h handler) GetBooks(w http.ResponseWriter, r *http.Request) {
+	var books []models.Books
 	fmt.Println("Get all books API called ", r.RequestURI)
+	h.DB.Find(&books)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(books)
 }
