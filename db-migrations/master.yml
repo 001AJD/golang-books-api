@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ajinkyadhomne
+      changes:
+        - sqlFile:
+            path: changesets/0001_create_books_schema.sql
+            relativeToChangelogFile: true

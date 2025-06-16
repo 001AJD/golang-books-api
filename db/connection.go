@@ -3,7 +3,6 @@ package db
 import (
 	"log"
 
-	"github.com/001ajd/golang-books-api/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -18,7 +17,7 @@ func ConnectDb() *gorm.DB {
 		panic(err)
 	}
 	log.Println("Connected to DB!")
-	log.Println("DB migration in progress")
-	dbConnection.AutoMigrate(&models.Books{})
+	// log.Println("DB migration in progress")
+	// dbConnection.AutoMigrate(&models.Books{})
 	return dbConnection
 }

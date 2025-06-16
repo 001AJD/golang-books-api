@@ -12,5 +12,20 @@ services:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  liquibase:
+    image: liquibase/liquibase
+    container_name: liquibase-books-db-migration
+    depends_on:
+      - postgres
+    volumes:
+      - ./db-migrations/master.yml:/liquibase/master.yml
+      - ./db-migrations/changesets:/liquibase/changesets/
+    command: ["update"]
+    environment:
+      LIQUIBASE_COMMAND_URL: "jdbc:postgresql://postgres:5432/books"
+      LIQUIBASE_COMMAND_USERNAME: gorm
+      LIQUIBASE_COMMAND_PASSWORD: gorm
+      LIQUIBASE_COMMAND_CHANGELOG_FILE: master.yml
+
 volumes:
   postgres_data:
