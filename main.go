@@ -5,12 +5,18 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/joho/godotenv"
+
 	"github.com/001ajd/golang-books-api/db"
 	"github.com/001ajd/golang-books-api/handlers"
 	"github.com/gorilla/mux"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("failed to load the .env file")
+	}
 	fmt.Println("books-api running...")
 	DB := db.ConnectDb()
 	h := handlers.New(DB)
