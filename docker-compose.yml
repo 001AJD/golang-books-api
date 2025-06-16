@@ -10,6 +10,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./db-migrations/init:/docker-entrypoint-initdb.d
     restart: unless-stopped
 
   liquibase:
@@ -26,6 +27,7 @@ services:
       LIQUIBASE_COMMAND_USERNAME: gorm
       LIQUIBASE_COMMAND_PASSWORD: gorm
       LIQUIBASE_COMMAND_CHANGELOG_FILE: master.yml
+      LIQUIBASE_COMMAND_DEFAULT_SCHEMA_NAME: liquibase_meta
 
 volumes:
   postgres_data:

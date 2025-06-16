@@ -6,3 +6,6 @@ databaseChangeLog:
         - sqlFile:
             path: changesets/0001_create_books_schema.sql
             relativeToChangelogFile: true
+        - sqlFile:
+            path: changesets/0002_create_books_table.sql
+            relativeToChangelogFile: true
