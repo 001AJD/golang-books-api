@@ -7,7 +7,9 @@ A simple REST API built with Go. This API demonstrates basic CRUD operations on 
 ```
 books-api/
 ├── db/
-│   └── connection.go       # Database connection and migration logic
+│   └── connection.go       # Database connection
+|── db-migrations/           # Database DDL changesets
+|   └──
 ├── handlers/
 │   ├── base-handler.go     # Provides the base handler with a DB instance.
 │   └── handlers.go         # Contains the GetBooks HTTP endpoint implementation.

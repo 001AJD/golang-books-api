@@ -23,6 +23,7 @@ func main() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/api/v1/books", h.GetBooks).Methods("GET")
+	router.HandleFunc("/api/v1/books/{id}", h.GetBookById).Methods("GET")
 	log.Fatal(http.ListenAndServe(":3000", router))
 
 }
